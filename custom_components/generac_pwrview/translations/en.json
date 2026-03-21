@@ -1,0 +1,94 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect to Generac PWRview",
+        "description": "Choose how you want to connect to your PWRview device.",
+        "menu_options": {
+          "cloud": "Cloud API (auto-discovers device, supports local fallback)",
+          "local": "Local only (connect directly to device on your network)"
+        }
+      },
+      "cloud": {
+        "title": "Cloud API credentials",
+        "description": "Enter your Generac/Neurio API credentials. You can find these in your account settings at my.neur.io.",
+        "data": {
+          "api_key": "API key",
+          "api_secret": "API secret"
+        },
+        "data_description": {
+          "api_key": "Your API key from the Generac/Neurio account settings.",
+          "api_secret": "Your API secret from the Generac/Neurio account settings."
+        }
+      },
+      "local": {
+        "title": "Local device setup",
+        "description": "Enter your PWRview device details. The serial number is printed on the dongle and the IP address can be found in your router's DHCP client list.",
+        "data": {
+          "host": "Device IP address",
+          "serial_number": "Serial number"
+        },
+        "data_description": {
+          "host": "The IP address of your PWRview device on your local network.",
+          "serial_number": "The serial number printed on your PWRview dongle."
+        }
+      },
+      "local_failed": {
+        "title": "Local connection failed",
+        "description": "Could not reach your PWRview device at `{host}`. Check that Home Assistant can access your local network. Enable the checkbox below to use cloud polling instead, or leave it unchecked to retry the local connection.",
+        "data": {
+          "use_cloud": "Use cloud polling instead"
+        },
+        "data_description": {
+          "use_cloud": "If enabled, Home Assistant will poll the Generac cloud API instead of your local device. This uses more bandwidth but works if your device is not accessible locally."
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Failed to connect to Generac PWRview API",
+      "invalid_auth": "Invalid API key or secret",
+      "no_sensors": "No PWRview devices found for this account",
+      "local_connection_failed": "Could not connect to device. Check the IP address and that the device is online."
+    },
+    "abort": {
+      "already_configured": "This PWRview device is already configured"
+    }
+  },
+  "entity": {
+    "sensor": {
+      "home_consumption_power": {
+        "name": "Home consumption power"
+      },
+      "home_consumption_energy": {
+        "name": "Home consumption energy"
+      },
+      "solar_production_power": {
+        "name": "Solar production power"
+      },
+      "solar_production_energy": {
+        "name": "Solar production energy"
+      },
+      "grid_power": {
+        "name": "Grid power"
+      },
+      "grid_import_energy": {
+        "name": "Grid import energy"
+      },
+      "grid_export_energy": {
+        "name": "Grid export energy"
+      },
+      "phase_a_voltage": {
+        "name": "Phase A voltage"
+      },
+      "phase_b_voltage": {
+        "name": "Phase B voltage"
+      },
+      "phase_a_power": {
+        "name": "Phase A power"
+      },
+      "phase_b_power": {
+        "name": "Phase B power"
+      }
+    }
+  }
+}
