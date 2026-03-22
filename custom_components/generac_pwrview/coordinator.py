@@ -68,7 +68,7 @@ class PWRviewCoordinator(DataUpdateCoordinator[PWRviewData]):
     ) -> None:
         """Initialize the coordinator."""
         self.mode: PWRviewMode = PWRviewMode(entry.data.get("mode", PWRviewMode.CLOUD))
-        self.sensor_id: str = entry.data["sensor_id"]
+        self.sensor_id: str | None = entry.data.get("sensor_id")
         self.host: str | None = entry.data.get(CONF_HOST)
         self.serial_number: str = entry.data["serial_number"]
         self.location_name: str = entry.data.get("location_name", "PWRview")
